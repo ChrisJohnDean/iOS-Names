@@ -48,7 +48,7 @@ class NameFormatterTests: XCTestCase {
     XCTAssertEqual(nameFormatter.inverted(), expectedOutput)
   }
   
-  func test_returnLastFirst_GivenFirstLast() {
+  func test_invertName_GivenFirstLast_ReturnLastFirst() {
     let inputName = "Chris Dean"
     let expectedName = "Dean, Chris"
     
@@ -56,7 +56,7 @@ class NameFormatterTests: XCTestCase {
     XCTAssertEqual(nameFormatter.inverted(), expectedName)
   }
   
-  func test_returnLastFirst_GivenFirstLastWithSpaces() {
+  func test_invertName_GivenFirstLastWithSpaces_ReturnLastFirst() {
     let inputName = " Chris Dean "
     let expectedName = "Dean, Chris"
     
@@ -64,7 +64,7 @@ class NameFormatterTests: XCTestCase {
     XCTAssertEqual(nameFormatter.inverted(), expectedName)
   }
   
-  func test_emptyString_GivenASingleHonorific() {
+  func test_invertName_GivenASingleHonorific_ReturnEmptyString() {
     let inputName = "Dr. "
     let expectedName = ""
     
@@ -72,7 +72,7 @@ class NameFormatterTests: XCTestCase {
     XCTAssertEqual(nameFormatter.inverted(), expectedName)
   }
   
-  func test_honorificFirstName_GivenHonorificFirstName() {
+  func test_invertName_GivenHonorificFirstName_ReturnHonorificFirstName() {
     let inputName = "Mr. Dean"
     let expectedOutput = "Mr. Dean"
     
@@ -80,7 +80,7 @@ class NameFormatterTests: XCTestCase {
     XCTAssertEqual(nameFormatter.inverted(), expectedOutput)
   }
   
-  func test_honorificLastNameFirstname_GivenHonorificFirstNameLastName() {
+  func test_invertName_GivenHonorificFirstNameLastName_ReturnHonorificLastNameFirstname() {
     let inputName = "Mr. Chris Dean"
     let expectedOutput = "Mr. Dean, Chris"
     
@@ -88,7 +88,7 @@ class NameFormatterTests: XCTestCase {
     XCTAssertEqual(nameFormatter.inverted(), expectedOutput)
   }
   
-  func test_honorificLastNameFirstname_GivenHonorificFirstNameLastNameWithSpaces() {
+  func test_invertName_GivenHonorificFirstNameLastNameWithSpaces_ReturnHonorificLastNameFirstname() {
     let inputName = " Mr. Chris Dean "
     let expectedOutput = "Mr. Dean, Chris"
     
