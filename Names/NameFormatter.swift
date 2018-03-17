@@ -20,14 +20,48 @@ import Foundation
 
 class NameFormatter {
   
-  let name: String
+  var name: String
   
   init(name: String) {
     self.name = name
   }
   
   func inverted() -> String {
-    return "🤷‍♀️"
+    
+    if name == "" {
+      return ""
+    }
+
+    let trimmedName = name.trimmingCharacters(in: .whitespaces)
+    name = trimmedName
+    
+    var array = name.components(separatedBy: " ")
+    
+    if array.count == 1 && array[0].suffix(1) == "." {
+      return ""
+      
+    } else if array[0].suffix(1) == "." && array.count == 2 {
+      return name
+      
+    } else if array.count > 2 && array[0].suffix(1) == "." {
+      
+      let honorific = array[0]
+      array.remove(at: 0)
+      array.reverse()
+      array[0] += ","
+      let lastFirst = honorific + " " + array.joined(separator: " ")
+      name = lastFirst
+      
+    } else if array.count > 1 {
+      
+      array.reverse()
+      array[0] += ","
+      let lastFirst = array.joined(separator: " ")
+      name = lastFirst
+      
+    }
+    
+    return name
   }
   
 }
